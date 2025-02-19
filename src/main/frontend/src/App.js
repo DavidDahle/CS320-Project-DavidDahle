@@ -1,39 +1,23 @@
-import { useEffect, useState } from 'react';
-import { API_URL } from "./config"; // Gets API_URL from config.js
+import React from 'react'
 
-function App() {
-  // State to hold the message from the backend
-  const [message, setMessage] = useState("");
 
-  // Fetch message from the backend on page load
-  useEffect(() => {
-    const fetchMessage = async () => {
-      try {
-        const response = await fetch(`${API_URL}/hello/personalized`, {
-          method: 'POST', // POST request
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ first: 'Ensign', last: 'Student' }) // JSON body
-        });
-
-        const text = await response.text(); // Convert response to text
-        setMessage(text); // Update state with backend response
-      } catch (error) {
-        console.error("Error fetching message:", error);
-        setMessage("Failed to load message");
-      }
-    };
-
-    fetchMessage();
-  }, []); // Empty dependency array ensures it runs only once
-
+export default function App() {
   return (
-    <div>
-      <h1>Message from the backend:</h1>
-      <p>{message}</p>
-    </div>
-  );
-}
+    <div className="landing-container">
+      <h1>Welcome to SLC Store</h1>
+      <p>
+        SLC Store is your go-to online shopping destination where you can explore a wide range of products, 
+        add them to your cart. We offer a seamless shopping experience, ensuring 
+        that you get the best quality products at great prices.
+      </p>
+      <p>
+        Browse through our store, add items to your cart, 
+        Start shopping now and enjoy a hassle-free experience!
+      </p>
+      <img src="/images/logo.jpeg" width="250px" height="250px" alt='logo'/>
 
-export default App;
+
+
+    </div>
+  )
+}
